@@ -1,3 +1,4 @@
+//signup page
 "use client";
 
 import Image from "next/image";
@@ -17,6 +18,12 @@ export default function SignUp() {
     reset,
     setFocus,
   } = useForm();
+
+  async function signInWithFacebook() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "facebook",
+    });
+  }
 
   const [serverMsg, setServerMsg] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);

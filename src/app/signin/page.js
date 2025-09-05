@@ -1,3 +1,4 @@
+//signin page
 "use client";
 
 import Image from "next/image";
@@ -6,10 +7,31 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { FaLock, FaLockOpen, FaGoogle, FaFacebook } from "react-icons/fa";
-// If you want to redirect after sign-in:
+import { upsertProfileFromAuthUser } from "../lib/upsertProfile";
 // import { useRouter } from "next/navigation";
 
 export default function SignIn() {
+  const [oauthLoading, setOauthLoading] = useState(null); // "google" | "facebook" | null
+
+  const handleOAuth = async (provider) => {
+    try {
+      setServerMsg("");
+      setOauthLoading(provider);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider, // "google" | "facebook"
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+          scopes: provider === "google" ? "openid email profile" : "public_profile email",
+        },
+      });
+      if (error) setError("root", { message: error.message });
+    } catch (e) {
+      setError("root", { message: e?.message ?? "OAuth failed" });
+    } finally {
+      setOauthLoading(null);
+    }
+  };
+
   // const router = useRouter();
   const {
     register,
@@ -35,18 +57,13 @@ export default function SignIn() {
       password,
     });
 
-    async function signInWithFacebook() {
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "facebook",
-      });
-    }
-
     if (error) {
       setError("root", { message: error.message });
       return;
     }
 
     if (data?.user) {
+      await upsertProfileFromAuthUser();
       setServerMsg("Signed in successfully!");
       reset({ email: "", password: "" });
       // router.push("/"); // optional redirect
