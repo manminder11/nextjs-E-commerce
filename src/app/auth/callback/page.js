@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -10,19 +9,24 @@ export default function AuthCallback() {
 
   useEffect(() => {
     (async () => {
-      // If no session yet, exchange the code in the URL for a session:
+      const url = new URL(window.location.href);
+      const code = url.searchParams.get("code");
+      console.log("callback code param:", code);
+
+      // If no session yet, try to exchange the code for a session
       const { data: sess } = await supabase.auth.getSession();
+
       if (!sess.session) {
         const { error } = await supabase.auth.exchangeCodeForSession(window.location.href);
         if (error) {
           console.error("OAuth exchange failed:", error.message);
-
+          console.log("Origin:", window.location.origin);
+          console.log("LocalStorage keys:", Object.keys(window.localStorage));
           return;
         }
       }
 
       await upsertProfileFromAuthUser();
-
       router.replace("/");
     })();
   }, [router]);

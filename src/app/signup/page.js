@@ -19,12 +19,6 @@ export default function SignUp() {
     setFocus,
   } = useForm();
 
-  async function signInWithFacebook() {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "facebook",
-    });
-  }
-
   const [serverMsg, setServerMsg] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
   const inputBase =

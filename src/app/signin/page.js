@@ -6,22 +6,22 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { FaLock, FaLockOpen, FaGoogle, FaFacebook } from "react-icons/fa";
+import { FaLock, FaLockOpen, FaGoogle, FaDiscord } from "react-icons/fa";
 import { upsertProfileFromAuthUser } from "../lib/upsertProfile";
 // import { useRouter } from "next/navigation";
 
 export default function SignIn() {
-  const [oauthLoading, setOauthLoading] = useState(null); // "google" | "facebook" | null
+  const [oauthLoading, setOauthLoading] = useState(null); // "google" | "discord" | null
 
   const handleOAuth = async (provider) => {
     try {
       setServerMsg("");
       setOauthLoading(provider);
       const { error } = await supabase.auth.signInWithOAuth({
-        provider, // "google" | "facebook"
+        provider, // "google" | "discord"
         options: {
           redirectTo: `${window.location.origin}/auth/callback`,
-          scopes: provider === "google" ? "openid email profile" : "public_profile email",
+          scopes: provider === "google" ? "openid email profile" : "identify email",
         },
       });
       if (error) setError("root", { message: error.message });
@@ -155,7 +155,7 @@ export default function SignIn() {
           <button
             type="button"
             onClick={() => handleOAuth("google")}
-            // disabled={oauthLoading !== null}
+            disabled={oauthLoading !== null}
             className="flex items-center justify-center gap-2 rounded-lg border border-neutral-300 py-2 hover:bg-neutral-50 disabled:opacity-60 cursor-pointer hover:scale-105 transition-all w-20"
             title="Continue with Google"
           >
@@ -163,12 +163,12 @@ export default function SignIn() {
           </button>
           <button
             type="button"
-            onClick={() => handleOAuth("facebook")}
-            // disabled={oauthLoading !== null}
+            onClick={() => handleOAuth("discord")}
+            disabled={oauthLoading !== null}
             className="flex items-center justify-center gap-2 rounded-lg border border-neutral-300 py-2 hover:bg-neutral-50 disabled:opacity-60 cursor-pointer hover:scale-105 transition-all w-20"
-            title="Continue with Facebook"
+            title="Continue with Discord"
           >
-            <FaFacebook color="black" />
+            <FaDiscord color="black" />
           </button>
         </div>
 
