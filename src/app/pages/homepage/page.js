@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Homepage = () => {
   return (
@@ -11,9 +12,9 @@ const Homepage = () => {
 
       {/* Navigation */}
       <nav style={{ textAlign: "center", marginBottom: "3rem" }}>
-        <a href="/" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Home</a>
-        <a href="/products" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Products</a>
-        <a href="/cart" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Cart</a>
+        <Link href="/" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Home</Link>
+        <Link href="/products" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Products</Link>
+        <Link href="/cart" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Cart</Link>
       </nav>
 
       {/* Main Content */}
@@ -21,16 +22,16 @@ const Homepage = () => {
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <h2 style={{ marginBottom: "1rem" }}>Welcome to our store</h2>
           <p style={{ color: "#666", marginBottom: "2rem" }}>Find everything you need in one place</p>
-          <a href="/products" style={{ 
-            display: "inline-block", 
-            padding: "0.75rem 1.5rem", 
-            background: "#333", 
-            color: "white", 
-            textDecoration: "none",
-            borderRadius: "4px"
-          }}>
-            Browse Products
-          </a>
+                  <Link href="/products" style={{ 
+          display: "inline-block", 
+          padding: "0.75rem 1.5rem", 
+          background: "#333", 
+          color: "white", 
+          textDecoration: "none",
+          borderRadius: "4px"
+        }}>
+          Browse Products
+        </Link>
         </div>
 
         {/* Products */}
@@ -54,15 +55,18 @@ const Homepage = () => {
               </div>
               <h3 style={{ margin: "0 0 0.5rem 0" }}>Item {item}</h3>
               <p style={{ margin: "0 0 1rem 0", color: "#666" }}>$29.99</p>
-              <button style={{ 
+              <Link href="/cart" style={{ 
+                display: "inline-block",
                 background: "#333", 
                 color: "white", 
                 border: "none", 
                 padding: "0.5rem 1rem", 
-                cursor: "pointer"
+                cursor: "pointer",
+                textDecoration: "none",
+                borderRadius: "4px"
               }}>
                 Add to Cart
-              </button>
+              </Link>
             </div>
           ))}
         </div>
