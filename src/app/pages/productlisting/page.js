@@ -23,9 +23,15 @@ const ProductListing = () => {
 
       {/* Navigation */}
       <nav style={{ textAlign: "center", marginBottom: "3rem" }}>
-        <Link href="/" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Home</Link>
-        <Link href="/products" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Products</Link>
-        <Link href="/cart" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>Cart</Link>
+        <Link href="/" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>
+          Home
+        </Link>
+        <Link href="/products" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>
+          Products
+        </Link>
+        <Link href="/cart" style={{ margin: "0 1rem", textDecoration: "none", color: "#333" }}>
+          Cart
+        </Link>
       </nav>
 
       {/* Page Title and Filters */}
@@ -50,28 +56,35 @@ const ProductListing = () => {
       </div>
 
       {/* Products Grid */}
-      <div style={{ 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", 
-        gap: "1.5rem",
-        marginBottom: "3rem"
-      }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "1.5rem",
+          marginBottom: "3rem",
+        }}
+      >
         {products.map((product) => (
-          <div key={product.id} style={{ 
-            border: "1px solid #ddd", 
-            padding: "1rem",
-            textAlign: "center"
-          }}>
-            <div style={{ 
-              height: "200px", 
-              background: "#f5f5f5", 
-              marginBottom: "1rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#999",
-              fontSize: "1.1rem"
-            }}>
+          <div
+            key={product.id}
+            style={{
+              border: "1px solid #ddd",
+              padding: "1rem",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                height: "200px",
+                background: "#f5f5f5",
+                marginBottom: "1rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#999",
+                fontSize: "1.1rem",
+              }}
+            >
               {product.name}
             </div>
             <h3 style={{ margin: "0 0 0.5rem 0" }}>{product.name}</h3>
@@ -80,30 +93,36 @@ const ProductListing = () => {
               ${product.price}
             </p>
             <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center" }}>
-              <Link href="/cart" style={{ 
-                display: "inline-block",
-                background: "#333", 
-                color: "white", 
-                border: "none", 
-                padding: "0.5rem 1rem", 
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                textDecoration: "none",
-                borderRadius: "4px"
-              }}>
+              <Link
+                href="/cart"
+                style={{
+                  display: "inline-block",
+                  background: "#333",
+                  color: "white",
+                  border: "none",
+                  padding: "0.5rem 1rem",
+                  cursor: "pointer",
+                  fontSize: "0.9rem",
+                  textDecoration: "none",
+                  borderRadius: "4px",
+                }}
+              >
                 Add to Cart
               </Link>
-              <Link href={`/product/${product.id}`} style={{ 
-                display: "inline-block",
-                background: "white", 
-                color: "#333", 
-                border: "1px solid #333", 
-                padding: "0.5rem 1rem", 
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                textDecoration: "none",
-                borderRadius: "4px"
-              }}>
+              <Link
+                href={`/product/${product.id}`}
+                style={{
+                  display: "inline-block",
+                  background: "white",
+                  color: "#333",
+                  border: "1px solid #333",
+                  padding: "0.5rem 1rem",
+                  cursor: "pointer",
+                  fontSize: "0.9rem",
+                  textDecoration: "none",
+                  borderRadius: "4px",
+                }}
+              >
                 View Details
               </Link>
             </div>
@@ -114,37 +133,45 @@ const ProductListing = () => {
       {/* Pagination */}
       <div style={{ textAlign: "center" }}>
         <div style={{ display: "inline-flex", gap: "0.5rem", alignItems: "center" }}>
-          <button style={{ 
-            padding: "0.5rem 1rem", 
-            border: "1px solid #ddd", 
-            background: "white", 
-            cursor: "pointer"
-          }}>
+          <button
+            style={{
+              padding: "0.5rem 1rem",
+              border: "1px solid #ddd",
+              background: "white",
+              cursor: "pointer",
+            }}
+          >
             Previous
           </button>
           <span style={{ padding: "0.5rem 1rem", background: "#333", color: "white" }}>1</span>
-          <button style={{ 
-            padding: "0.5rem 1rem", 
-            border: "1px solid #ddd", 
-            background: "white", 
-            cursor: "pointer"
-          }}>
+          <button
+            style={{
+              padding: "0.5rem 1rem",
+              border: "1px solid #ddd",
+              background: "white",
+              cursor: "pointer",
+            }}
+          >
             2
           </button>
-          <button style={{ 
-            padding: "0.5rem 1rem", 
-            border: "1px solid #ddd", 
-            background: "white", 
-            cursor: "pointer"
-          }}>
+          <button
+            style={{
+              padding: "0.5rem 1rem",
+              border: "1px solid #ddd",
+              background: "white",
+              cursor: "pointer",
+            }}
+          >
             3
           </button>
-          <button style={{ 
-            padding: "0.5rem 1rem", 
-            border: "1px solid #ddd", 
-            background: "white", 
-            cursor: "pointer"
-          }}>
+          <button
+            style={{
+              padding: "0.5rem 1rem",
+              border: "1px solid #ddd",
+              background: "white",
+              cursor: "pointer",
+            }}
+          >
             Next
           </button>
         </div>
