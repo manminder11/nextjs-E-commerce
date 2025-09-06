@@ -1,8 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabaseClient";
-import { upsertProfileFromAuthUser } from "../../lib/upsertProfile";
+import { supabase } from "../../../../lib/supabaseClient";
+import { upsertProfileFromAuthUser } from "../../../../lib/upsertProfile";
 
 export default function AuthCallback() {
   const router = useRouter();

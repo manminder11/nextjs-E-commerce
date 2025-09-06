@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../../../lib/supabaseClient";
 import { FaLock, FaLockOpen, FaGoogle, FaDiscord } from "react-icons/fa";
-import { upsertProfileFromAuthUser } from "../lib/upsertProfile";
+import { upsertProfileFromAuthUser } from "../../../lib/upsertProfile";
 // import { useRouter } from "next/navigation";
 
 export default function SignIn() {

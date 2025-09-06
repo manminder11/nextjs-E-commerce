@@ -4,7 +4,7 @@
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../../../lib/supabaseClient";
 import Link from "next/link";
 import { FaLock, FaLockOpen } from "react-icons/fa";
 
