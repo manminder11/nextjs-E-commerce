@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+
 export default function Header() {
+  // Navigation links
   const navLinks = [
     { name: "Home", link: "/" },
-    { name: "Create new  listing", link: "/createItem" },
-    { name: "Cart", link: "/cart" },
-    { name: "Profile", link: "/profile" },
+    { name: "Create New  Listing", link: "/createItem" },
+    { name: "My Listings", link: "/mylistings" },
+    { name: "Favorites", link: "/favorites" },
+    { name: "Settings", link: "/settings" },
   ];
   return (
     <header className="flex justify-between px-5  items-center  shadow-md py-3">

@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 export default function ProductsGrid({ products }) {
   const router = useRouter();
 
-  const handleAdd = (p) => {
-    router.push("/cart");
-  };
+  // const handleAdd = (p) => {
+  //   router.push("/cart");
+  // };
 
   return (
     <Grid container spacing={3} justifyContent="center">
@@ -22,7 +22,7 @@ export default function ProductsGrid({ products }) {
             category={p.category}
             image={p.image}
             price={p.price}
-            onAddToCart={() => handleAdd(p)}
+            // onAddToCart={() => handleAdd(p)}
           />
         </Grid>
       ))}
