@@ -10,7 +10,7 @@ export default function SideBar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // state
+  // states
   const [categories, setCategories] = useState([]);
   const [showAllCats, setShowAllCats] = useState(false);
 

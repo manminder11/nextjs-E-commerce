@@ -24,7 +24,7 @@ export default function ProductsPage() {
     })();
   }, []);
 
-  if (loading) return <div className="p-4">Loading…</div>;
+  if (loading) return <div className="p-4 text-center text-black">Loading…</div>;
   if (err) return <div className="p-4 text-red-600">{err}</div>;
 
   return (

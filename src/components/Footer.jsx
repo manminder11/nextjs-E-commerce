@@ -7,7 +7,7 @@ import { FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
 export default function Footer() {
   const shop = [
     { name: "Products", href: "/products" },
-    { name: "Place Item", href: "/createItem" },
+    { name: "Create new listing", href: "/createItem" },
     { name: "Cart", href: "/cart" },
   ];
 

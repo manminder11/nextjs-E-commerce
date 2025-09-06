@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
   const navLinks = [
     { name: "Home", link: "/" },
-    { name: "Place Item", link: "/createItem" },
+    { name: "Create new  listing", link: "/createItem" },
     { name: "Cart", link: "/cart" },
     { name: "Profile", link: "/profile" },
   ];
