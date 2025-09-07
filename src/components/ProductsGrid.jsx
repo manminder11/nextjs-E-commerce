@@ -7,10 +7,6 @@ import { useRouter } from "next/navigation";
 export default function ProductsGrid({ products }) {
   const router = useRouter();
 
-  // const handleAdd = (p) => {
-  //   router.push("/cart");
-  // };
-
   return (
     <Grid container spacing={3} justifyContent="center">
       {products.map((p) => (

@@ -54,7 +54,7 @@ export default async function ProductPage({ params }) {
             <button className=" rounded-xl bg-white px-4 py-2.5 text-sm font-medium  transition hover:opacity-90 active:translate-y-px cursor-pointer hover:scale-103 text-black border border-neutral-400 hover:border-neutral-900">
               Send Message
             </button>
-            <FavoriteButton />
+            <FavoriteButton product={p} />
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import FavoriteButton from "@/app/product/[id]/FavoriteButton";
 
 export default function Item({ id, title, category, image, price, onAddToCart, detailsHref }) {
   const detailsUrl = detailsHref ?? (id ? `/product/${id}` : "#");
@@ -19,6 +20,8 @@ export default function Item({ id, title, category, image, price, onAddToCart, d
       router.push(detailsUrl);
     }
   };
+
+  const product = { id, title, category, image, price };
 
   return (
     <article
@@ -45,18 +48,7 @@ export default function Item({ id, title, category, image, price, onAddToCart, d
         <div className="mt-3 flex items-center ">
           <div className="flex items-center justify-center gap-20 w-full">
             <p className="text-xs  text-neutral-500 font-semibold select-none">${price}</p>
-            <button
-              title="Add to Favorites"
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                // onAddToCart?.();
-                setIsFavorite(!isFavorite);
-              }}
-              className="rounded-lg bg-black px-3 py-1.5 text-sm text-white transition hover:opacity-90 active:translate-y-px cursor-pointer"
-            >
-              {isFavorite ? <FaStar className="text-yellow-400" /> : <FaRegStar />}
-            </button>
+            <FavoriteButton product={product} />
           </div>
         </div>
       </div>
