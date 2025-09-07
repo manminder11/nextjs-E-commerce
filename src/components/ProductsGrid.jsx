@@ -22,7 +22,7 @@ export default function ProductsGrid({ products }) {
             category={p.category}
             image={p.image}
             price={p.price}
-            // onAddToCart={() => handleAdd(p)}
+          // onAddToCart={() => handleAdd(p)}
           />
         </Grid>
       ))}

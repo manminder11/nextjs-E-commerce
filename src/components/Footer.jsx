@@ -9,7 +9,6 @@ export default function Footer() {
   const shop = [
     { name: "Products", href: "/products" },
     { name: "Create new listing", href: "/createItem" },
-    { name: "Cart", href: "/cart" },
   ];
 
   const support = [
