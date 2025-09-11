@@ -8,7 +8,7 @@ export default function CreateItemPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [newItem, setNewitem] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,16 +30,31 @@ export default function CreateItemPage() {
 
 
 
-    setIsSubmitting(true);
-    
     setTimeout(() => {
-      alert("Nice! Your item is now live");
+      // Create the new item with all the details
+      const Item = {
+        name: name,
+        description: description,
+        price: price,
+        date: new Date().toLocaleDateString()
+      };
+
+      
+
+
+      // save this item to the mylistings page 
+
+      const savingitem =  [...newItem, Item];
+      setNewitem(savingitem);
+      localStorage.setItem('userListings', JSON.stringify(savingitem));
+      alert("Item saved to local storage")
       setName("");
       setDescription("");
       setPrice("");
-      setIsSubmitting(false);
     }, 1000);
   };
+
+
 
 
 
@@ -91,25 +106,18 @@ export default function CreateItemPage() {
             <div className="pt-2">
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 px-4 rounded text-lg font-medium text-white ${
-                  isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-blue-500 hover:bg-blue-600 focus:outline-none'
-                }`}
+                className="w-full py-3 px-4 rounded text-lg font-medium text-white bg-blue-500 hover:bg-blue-600"
               >
-                {isSubmitting ? 'Posting' : 'Post Item'}
-              </button>
+                Post Item
+                </button>
             </div>
           </form>
-          
-          <div className="mt-4 pt-3 border-t border-gray-200">
-            <p className="text-xs text-black text-center">
-              💡 Add more fields as needed
-            </p>
           </div>
-        </div>
+          
+          
+          
       </main>
+
       
       <Footer />
     </div>
