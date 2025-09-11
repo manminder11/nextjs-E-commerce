@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 import FavoriteButton from "./FavoriteButton";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export default async function ProductPage({ params }) {
   const { id } = params;
@@ -20,7 +21,7 @@ export default async function ProductPage({ params }) {
 
   const p = await res.json();
   return (
-    <div className=" w-screen h-full min-h-screen p-4 bg-white">
+    <div className=" w-screen h-full min-h-screen px-4 bg-white">
       <Header />
       <Link href="/" className=" text-neutral-600 hover:underline">
         Back to products
@@ -58,6 +59,7 @@ export default async function ProductPage({ params }) {
               Send Message
             </button>
             <FavoriteButton />
+            <button>Sign in to favorite</button>
           </div>
         </div>
       </div>
