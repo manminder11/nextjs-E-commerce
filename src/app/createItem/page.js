@@ -1,5 +1,4 @@
 "use client";
-
 import  { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -58,6 +57,8 @@ export default function CreateItemPage() {
 
 
 
+  // implement the tailwind css in the page but keep the pattern of designing same  like background color, font color, font size, font weight, etc. 
+  
   return (
     <div className="min-h-screen bg-gray-100">
       <Header />
