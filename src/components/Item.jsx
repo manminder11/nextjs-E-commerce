@@ -1,15 +1,13 @@
 // src/components/Item.jsx
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FaRegStar, FaStar } from "react-icons/fa";
-import FavoriteButton from "@/app/product/[id]/FavoriteButton";
 
-export default function Item({ id, title, category, image, price, onAddToCart, detailsHref }) {
+import FavoriteButton from "@/components/FavoriteButton";
+
+export default function Item({ id, title, category, image, price, detailsHref }) {
   const detailsUrl = detailsHref ?? (id ? `/product/${id}` : "#");
   const router = useRouter();
-  const [isFavorite, setIsFavorite] = useState(false);
   const handleCardClick = () => {
     if (detailsUrl) router.push(detailsUrl);
   };

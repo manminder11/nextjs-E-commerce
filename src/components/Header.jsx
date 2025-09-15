@@ -26,7 +26,7 @@ export default function Header() {
         <ul className="flex items-center gap-10">
           {publicLinks.map(({ name, link }) => (
             <li key={link}>
-              <Link href={link} className="text-black hover:underline font-bold">
+              <Link href={link} className="text-black hover:underline font-bold transition duration-300 ease-in-out">
                 {name}
               </Link>
             </li>
@@ -35,7 +35,11 @@ export default function Header() {
           <SignedIn>
             {authedLinks.map(({ name, link }) => (
               <li key={link}>
-                <Link prefetch={false} href={link} className="text-black hover:underline font-bold">
+                <Link
+                  prefetch={false}
+                  href={link}
+                  className="text-black hover:underline font-bold transition duration-300 ease-in-out"
+                >
                   {name}
                 </Link>
               </li>

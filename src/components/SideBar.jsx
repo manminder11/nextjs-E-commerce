@@ -13,7 +13,7 @@ export default function SideBar({ onApply }) {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
-  // fetch cats
+  // fetch categories
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/categories")
       .then((r) => r.json())
