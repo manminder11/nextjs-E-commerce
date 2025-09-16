@@ -1,5 +1,5 @@
 "use client";
-import  { useState } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -7,11 +7,10 @@ export default function CreateItemPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [newItem, setNewitem] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!name.trim()) {
       alert("Please enter a name");
       return;
@@ -27,48 +26,41 @@ export default function CreateItemPage() {
       return;
     }
 
-
-
     setTimeout(() => {
-      // Create the new item with all the details
       const Item = {
         name: name,
         description: description,
         price: price,
-        date: new Date().toLocaleDateString()
       };
+      // append the new item to the existing items in local storage and save it
+      const existingItems =
+        JSON.parse(localStorage.getItem("userListings")) || [];
+      const updateditems = [...existingItems, Item];
+      localStorage.setItem("userListings", JSON.stringify(updateditems));
 
-      
+      // also update the state
+      setNewitem(updateditems);
 
-
-      // save this item to the mylistings page 
-
-      const savingitem =  [...newItem, Item];
-      setNewitem(savingitem);
-      localStorage.setItem('userListings', JSON.stringify(savingitem));
-      alert("Item saved to local storage")
+      alert("Item saved to local storage");
       setName("");
       setDescription("");
       setPrice("");
     }, 1000);
   };
 
+  // implement the tailwind css in the page but keep the pattern of designing same  like background color, font color, font size, font weight, etc.
 
-
-
-
-  // implement the tailwind css in the page but keep the pattern of designing same  like background color, font color, font size, font weight, etc. 
-  
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* header is called from the layout  */}
       <Header />
-      
+
       <main className="max-w-3xl mx-auto px-4 py-6">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <h1 className="text-2xl font-semibold text-black mb-6">
             List Your Item
           </h1>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input
@@ -102,7 +94,6 @@ export default function CreateItemPage() {
               />
             </div>
 
-
             {/* Submit Button */}
             <div className="pt-2">
               <button
@@ -110,16 +101,13 @@ export default function CreateItemPage() {
                 className="w-full py-3 px-4 rounded text-lg font-medium text-white bg-blue-500 hover:bg-blue-600"
               >
                 Post Item
-                </button>
+              </button>
             </div>
           </form>
-          </div>
-          
-          
-          
+        </div>
       </main>
 
-      
+      {/* footer is called from the layout  */}
       <Footer />
     </div>
   );
