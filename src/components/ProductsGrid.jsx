@@ -2,10 +2,10 @@
 
 import Grid from "@mui/material/Grid";
 import Item from "@/components/Item";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 export default function ProductsGrid({ products }) {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <Grid container spacing={3} justifyContent="center">
@@ -18,7 +18,6 @@ export default function ProductsGrid({ products }) {
             category={p.category}
             image={p.image}
             price={p.price}
-          // onAddToCart={() => handleAdd(p)}
           />
         </Grid>
       ))}

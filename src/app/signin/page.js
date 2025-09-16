@@ -18,7 +18,6 @@ export default function SignIn() {
     handleSubmit,
     formState: { errors, isSubmitting, isLoading },
     setError,
-    reset,
     setFocus,
   } = useForm();
 
@@ -36,9 +35,9 @@ export default function SignIn() {
     return <div className="text-center p-5 text-2xl text-neutral-500 bg-white w-full h-screen">Loading form...</div>;
   }
 
+  //clerk sign in function made with chatgpt
   const onSubmit = async (values) => {
     setServerMsg("");
-
     try {
       const res = await signIn.create({
         identifier: values.email,
@@ -56,7 +55,7 @@ export default function SignIn() {
       setError("root", { message: msg });
     }
   };
-
+  //clerk sign in with provider function  made with chatgpt
   const handleOAuth = async (provider) => {
     setServerMsg("");
     setOauthLoading(provider);
@@ -118,8 +117,8 @@ export default function SignIn() {
             className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-md p-2 text-neutral-600 hover:bg-neutral-100 focus:outline-none"
             title={passwordShow ? "Hide password" : "Show password"}
           >
-            <FaLockOpen style={{ display: passwordShow ? "block" : "none" }} />
-            <FaLock style={{ display: passwordShow ? "none" : "block" }} />
+            <FaLockOpen style={{ display: passwordShow ? "block" : "none" }} className="cursor-pointer" />
+            <FaLock style={{ display: passwordShow ? "none" : "block" }} className="cursor-pointer" />
           </button>
         </div>
         {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>}

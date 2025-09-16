@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Header from "@/components/Header";
 import { UserProfile, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { useClerk } from "@clerk/nextjs";
 
 const LS_KEY = "settings";
 
@@ -15,6 +16,7 @@ export default function Settings() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const { signOut } = useClerk();
 
   useEffect(() => {
     try {
@@ -46,7 +48,7 @@ export default function Settings() {
       const next = items.filter((p) => p.id !== id);
       setItems(next);
       localStorage.setItem(LS_KEY, JSON.stringify(next));
-    } catch {}
+    } catch { }
   };
 
   const handleUpdateEmail = async () => {
@@ -112,9 +114,18 @@ export default function Settings() {
               >
                 Update Password
               </button>
+
               <li>
                 <UserButton />
               </li>
+
+              {/* ✅ Sign Out Button */}
+              <button
+                onClick={() => signOut()}
+                className="mt-4 text-sm text-red-500 underline hover:text-red-700"
+              >
+                Sign Out
+              </button>
             </div>
 
             {message && <p className="text-center text-sm text-green-600 mt-4">{message}</p>}

@@ -9,13 +9,13 @@ import { FaLock, FaLockOpen } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+  //reactForm hook
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
     setError,
-    reset,
     setFocus,
   } = useForm();
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -29,6 +29,7 @@ export default function SignUp() {
   const inputBase =
     "w-full rounded-lg border bg-white px-3 py-2 text-neutral-900 placeholder-neutral-400 outline-none focus:border-neutral-900 hover:border-neutral-900 transition-all";
 
+  //chat gpt generated function
   const onSubmit = async (values) => {
     if (!isLoaded) return;
     setServerMsg("");
@@ -59,7 +60,7 @@ export default function SignUp() {
       setError("root", { message: msg });
     }
   };
-
+  //chatgpt generated function
   const onVerify = async (e) => {
     e.preventDefault();
     if (!isLoaded) return;
@@ -79,19 +80,19 @@ export default function SignUp() {
     }
   };
 
-  const pwd = watch("password", "");
+  const pwd = watch("password", ""); //to watch password field and compare it
 
   useEffect(() => {
     setFocus("name");
   }, [setFocus]);
 
   return (
-    <div className="w-screen min-h-screen flex flex-col items-center justify-center bg-white ">
+    <div className="w-screen min-h-screen flex flex-col items-center justify-center bg-white p-5">
       <div className="mb-6">
         <Image alt="Logo" src="/logo.png" width={50} height={50} />
       </div>
 
-      {!needCode && (
+      {!needCode ? (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm rounded-2xl p-6 shadow-md border">
           <h1 className="text-3xl font-semibold mb-5 text-black text-center">Create an account</h1>
 
@@ -195,9 +196,7 @@ export default function SignUp() {
             </Link>
           </p>
         </form>
-      )}
-
-      {needCode && (
+      ) : (
         <form onSubmit={onVerify} className="w-full max-w-sm rounded-2xl p-6 shadow-md border mt-4">
           <h1 className="text-3xl font-semibold mb-5 text-black text-center">Verify your email</h1>
 
@@ -209,7 +208,7 @@ export default function SignUp() {
             type="text"
             placeholder="123456"
             className={`${inputBase} border-neutral-300`}
-            value={code}
+            value={code ?? ""}
             onChange={(e) => setCode(e.target.value)}
           />
 

@@ -24,7 +24,7 @@ export default function ProductsPage({ onLoad, filters }) {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [onLoad]);
 
   const filtered = useMemo(() => {
     const q = (filters?.q || "").toLowerCase().trim();

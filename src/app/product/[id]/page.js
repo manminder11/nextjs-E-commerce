@@ -1,16 +1,18 @@
 // app/product/[id]/page.js
+//server component
 
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "../../../components/FavoriteButton";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 
 export default async function ProductPage({ params }) {
   const { id } = params;
 
+  //fetching item by id
   const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
     next: { revalidate: 60 },
   });

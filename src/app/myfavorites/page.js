@@ -6,12 +6,14 @@ import Link from "next/link";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Header from "@/components/Header";
 
+//key for local storage
 const LS_KEY = "favorites";
 
 export default function MyFavourites() {
   const [ready, setReady] = useState(false);
   const [items, setItems] = useState([]);
 
+  //get array of items from local storage once page mounts
   useEffect(() => {
     try {
       const raw = localStorage.getItem(LS_KEY);
@@ -37,6 +39,7 @@ export default function MyFavourites() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
+  //remove function by id(gives array of items where id's is not id argument)
   const remove = (id) => {
     try {
       const next = items.filter((p) => p.id !== id);
