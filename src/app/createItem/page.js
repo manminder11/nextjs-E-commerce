@@ -21,6 +21,7 @@ export default function CreateItemPage() {
       return;
     }
 
+    // this should be corrected
     if (price <= 0 || price === "") {
       alert("Please enter a valid price 0 or higher");
       return;
@@ -37,9 +38,6 @@ export default function CreateItemPage() {
         JSON.parse(localStorage.getItem("userListings")) || [];
       const updateditems = [...existingItems, Item];
       localStorage.setItem("userListings", JSON.stringify(updateditems));
-
-      // also update the state
-      setNewitem(updateditems);
 
       alert("Item saved to local storage");
       setName("");
